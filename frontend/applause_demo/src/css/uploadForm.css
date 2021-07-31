@@ -1,0 +1,11 @@
+.file_input{
+    color:black;
+    padding-left:3%;
+    padding-right: 3%;
+    font-size: large;
+}
+
+#up_label{
+    display:flex;
+}
+
