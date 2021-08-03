@@ -1,11 +1,16 @@
-import React,{useState} from 'react'
+import React, { useState} from 'react'
 import {Form, Button} from 'react-bootstrap'
 import '../css/uploadForm.css';
 import {uploadFile} from "../services/FileService";
+import { toast } from 'react-toastify';
+import ReactLoading from 'react-loading';
 function Upload() {
+
+    const [loading,setLoading] = useState(false);
 
     const handleSubmit=(e) => {
         e.preventDefault();
+
         let files = {
             tester: e.target.tester.files[0],
             devices: e.target.devices.files[0],
@@ -13,38 +18,56 @@ function Upload() {
             bugs: e.target.bugs.files[0]
         };
 
-        const callback = (val) => {
-            console.log(val);
+        if(files.tester === undefined && files.devices === undefined
+        && files.test_device === undefined && files.bugs === undefined){
+            toast.error("At least upload 1 file to continue");
         }
-
-        uploadFile(files,callback)
+        else{
+            const callback = (response) => {
+                if(response.msg === "Uploaded!"){
+                    toast.success("Uploaded Successfully")
+                    setLoading(false)
+                }
+                else{
+                    toast.warning("Error Occurred, please check you have the right files")
+                    setLoading(false)
+                }
+            }
+            uploadFile(files,callback)
+            setLoading(true)
+        }
     }
 
     return (
-        <div>
-        <Form noValidate onSubmit={handleSubmit}>
-            <Form.Group controlId="tester" className={'file_input'}>
-                <Form.Label id={'up_label'}>Testers</Form.Label>
-                <Form.Control type="file" accept=".csv" name={"testers"}/>
-            </Form.Group>
-                <Form.Group controlId="device" className={'file_input'}>
-                    <Form.Label id={'up_label'}>Devices</Form.Label>
-                    <Form.Control type="file" accept=".csv" name={"devices"}/>
+        <>
+        {
+            loading === true?
+                <ReactLoading type={"cylon"} color={"skyblue"} height={100} width={"100%"} />
+                :
+                <Form noValidate onSubmit={handleSubmit}>
+                    <Form.Group controlId="tester" className={'file_input'}>
+                        <Form.Label id={'up_label'}>Testers</Form.Label>
+                        <Form.Control type="file" accept=".csv" name={"testers"} disabled={loading}/>
+                    </Form.Group>
+                    <Form.Group controlId="device" className={'file_input'}>
+                        <Form.Label id={'up_label'}>Devices</Form.Label>
+                        <Form.Control type="file" accept=".csv" name={"devices"} disabled={loading}/>
 
-                </Form.Group>
-                <Form.Group controlId="test_device" className={'file_input'}>
-                    <Form.Label id={'up_label'}>Tester-Device</Form.Label>
-                    <Form.Control type="file" accept=".csv" name={"test_device"}/>
+                    </Form.Group>
+                    <Form.Group controlId="test_device" className={'file_input'}>
+                        <Form.Label id={'up_label'}>Tester-Device</Form.Label>
+                        <Form.Control type="file" accept=".csv" name={"test_device"} disabled={loading}/>
 
-                </Form.Group>
-                <Form.Group controlId="bug" className={'file_input'} >
-                    <Form.Label id={'up_label'}>Bugs</Form.Label>
-                    <Form.Control type="file" accept=".csv" name={"bugs"}/>
-                </Form.Group>
+                    </Form.Group>
+                    <Form.Group controlId="bug" className={'file_input'} >
+                        <Form.Label id={'up_label'}>Bugs</Form.Label>
+                        <Form.Control type="file" accept=".csv" name={"bugs"} disabled={loading}/>
+                    </Form.Group>
 
-            <Button type="submit">Submit form</Button>
-        </Form>
-        </div>
+                    <Button type="submit" style={{width:"100%"}} disabled={loading}>Submit form</Button>
+                </Form>
+        }
+        </>
     )
 }
 

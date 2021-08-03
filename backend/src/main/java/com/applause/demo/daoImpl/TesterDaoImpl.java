@@ -4,9 +4,11 @@ import com.applause.demo.dao.TesterDao;
 import com.applause.demo.entity.Testers;
 import com.applause.demo.repository.TesterRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
+
 
 @Repository
 public class TesterDaoImpl implements TesterDao {
@@ -18,8 +20,10 @@ public class TesterDaoImpl implements TesterDao {
     }
 
     @Override
-    public List<String> getCountries(){
-        return testerRepository.findAllDistinctByCountry();
+    public Page<String> getCountries(int page){
+        return testerRepository.findAllDistinctByCountry(PageRequest.of(page,10));
     }
+
+
 
 }

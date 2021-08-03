@@ -10,15 +10,23 @@ import org.hibernate.annotations.GenericGenerator;
 @Table(name = "bugs")
 public class Bugs {
     @Id
-    @GeneratedValue(generator = "increment")
-    @GenericGenerator(name="increment", strategy = "increment")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private Integer testerId;
     private Integer deviceId;
+    private Integer testerId;
+
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "testerId",insertable = false,updatable = false)
+    private Testers tester;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "deviceId",insertable = false,updatable = false)
+    private Devices device;
 
     Bugs(){}
 
-    public Bugs(Integer testerId, Integer deviceId){
+    public Bugs(Integer deviceId, Integer testerId){
         this.testerId = testerId;
         this.deviceId = deviceId;
     }

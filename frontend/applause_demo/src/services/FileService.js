@@ -1,9 +1,9 @@
-import {PostFiles} from "../utils/aj";
+import {POSTRequest} from "../utils/aj";
 
 
 
 export const uploadFile = (data, callback) => {
-
-    PostFiles(data, callback);
+    let mappedName = "uploadFile"
+    POSTRequest(mappedName,data, callback);
 };
 

@@ -48,8 +48,8 @@ CREATE TABLE `tester_device` (
 DROP TABLE IF EXISTS `bugs` ;
 CREATE TABLE `bugs` (
     `id` int NOT NULL AUTO_INCREMENT,
-    `tester_id` int NOT NULL,
     `device_id` int NOT NULL,
+    `tester_id` int NOT NULL,
 
     PRIMARY KEY (`id`),
     FOREIGN KEY(`tester_id`) REFERENCES `testers`(`id`),

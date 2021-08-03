@@ -1,10 +1,11 @@
 package com.applause.demo.dao;
 
 import com.applause.demo.entity.Testers;
+import org.springframework.data.domain.Page;
 
-import java.util.List;
+
 
 public interface TesterDao {
     public void save(Testers tester);
-    public List<String> getCountries();
+    public Page<String> getCountries(int page);
 }

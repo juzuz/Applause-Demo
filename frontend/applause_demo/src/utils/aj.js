@@ -1,9 +1,8 @@
 var apiUrl = 'http://localhost:8080/'
 
-let PostFiles = ( data, callback) => {
-    let url = apiUrl + '/uploadFile';
+let POSTRequest = (mappedName, data, callback) => {
+    let url = apiUrl + mappedName;
     let formData = new FormData();
-
     for(let p in data){
         formData.append(p,data[p]);
     }
@@ -41,4 +40,6 @@ let GETRequest = (mappedName,callback) => {
             console.log(error);
         });
 }
-export {PostFiles,GETRequest};
+
+
+export {POSTRequest,GETRequest};

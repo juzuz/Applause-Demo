@@ -1,6 +1,7 @@
 package com.applause.demo.controller;
 
 import com.applause.demo.service.FileService;
+import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,21 +18,33 @@ public class FileController {
 
 
     @PostMapping("/uploadFile")
-    public ResponseEntity<String> uploadFiles(@RequestParam("tester") MultipartFile tester,
-                                              @RequestParam("devices") MultipartFile devices,
-                                              @RequestParam("test_device") MultipartFile tester_device,
-                                              @RequestParam("bugs") MultipartFile bugs
+    public ResponseEntity<JSONObject> uploadFiles(@RequestParam(value = "tester",required = false) MultipartFile tester,
+                                              @RequestParam(value = "devices",required = false) MultipartFile devices,
+                                              @RequestParam(value = "test_device",required = false) MultipartFile tester_device,
+                                              @RequestParam(value = "bugs", required = false) MultipartFile bugs
                                               ){
-        try{
-            fileService.uploadTesters(tester);
-            fileService.uploadDevices(devices);
-            fileService.uploadTesterDevice(tester_device);
-            fileService.uploadBugs(bugs);
 
+
+        // Sometimes null doesn't capture. Multipart file headers may cause it not to be null
+        // Therefore check the actual file size.
+        try{
+            if(tester != null && tester.getSize() > 0)
+                fileService.uploadTesters(tester);
+            if(devices!= null && devices.getSize()>0)
+                fileService.uploadDevices(devices);
+            if(tester_device != null && tester_device.getSize()>0)
+                fileService.uploadTesterDevice(tester_device);
+            if(bugs != null && bugs.getSize()>0)
+                fileService.uploadBugs(bugs);
         }
         catch (Exception e){
-            return new ResponseEntity<>("File Data Bad", HttpStatus.INTERNAL_SERVER_ERROR);
+            JSONObject ob = new JSONObject();
+            ob.put("msg","Failed!");
+            return new ResponseEntity<JSONObject>(ob, HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        return new ResponseEntity<>("Uploaded", HttpStatus.OK);
+        JSONObject obj = new JSONObject();
+        obj.put("msg","Uploaded!");
+
+        return new ResponseEntity<JSONObject>(obj, HttpStatus.OK);
     }
 }

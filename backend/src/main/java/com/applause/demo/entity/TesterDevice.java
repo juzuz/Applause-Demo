@@ -16,6 +16,8 @@ public class TesterDevice {
     @Id
     private Integer deviceId;
 
+
+
     public TesterDevice(){};
 
     public TesterDevice(Integer t_id,Integer d_id){

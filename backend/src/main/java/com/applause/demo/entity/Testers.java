@@ -4,22 +4,22 @@ import lombok.Data;
 import javax.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
 
-import java.sql.Time;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Entity
 @Table(name = "testers")
 public class Testers {
     @Id
-    @GeneratedValue(generator = "increment")
-    @GenericGenerator(name="increment", strategy = "increment")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
     private String firstName;
     private String lastName;
     private String country;
     private Timestamp lastLogin;
+
 
     public Testers(){};
 
