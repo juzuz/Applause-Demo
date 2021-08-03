@@ -11,7 +11,7 @@ We will first need a schema for the database.
 In my case, the schema is named "applause".
 This can be changed in the application.properties file at "backend\src\main\resources\"
 
-![appProps](/assets/appProps.png)
+![appProps](./assets/appProps.png)
 
 Change the URL to whichever port your MySQL server is running on and the "applause" in the URL to whatever name you have chosen.
 Change the username and password and the database will be all set!
@@ -29,13 +29,13 @@ to begin the front-end server.
 # Results
 Once everything is running, you will be welcomed with the front page.
 
-![home](/assets/home.png)
+![home](./assets/home.png)
 
 There are two options in the navbar. For any meaningful results, we must first upload the required files.
 
 Once everything is uploaded, we can begin our search.
 
-![search](/assets/search.png)
+![search](./assets/search.png)
 
 Click on the filter type dropdown button and choose between filtering a country or a device.
 
@@ -49,7 +49,7 @@ Once you have set up your list of filters, click on the search button to get the
 
 If you leave the country or device empty, it will be counted as ALL countries or ALL devices.
 
-![list](/assets/list.png)
+![list](./assets/list.png)
 
 Here is our result for all countries and all devices.
 
