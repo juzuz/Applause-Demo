@@ -39,7 +39,7 @@ public class FileController {
         }
         catch (Exception e){
             JSONObject ob = new JSONObject();
-            ob.put("msg","Failed!");
+            ob.put("msg",e.toString());
             return new ResponseEntity<JSONObject>(ob, HttpStatus.INTERNAL_SERVER_ERROR);
         }
         JSONObject obj = new JSONObject();

@@ -29,7 +29,7 @@ function Upload() {
                     setLoading(false)
                 }
                 else{
-                    toast.warning("Error Occurred, please check you have the right files")
+                    toast.warning("An error has occurred! " + response.msg)
                     setLoading(false)
                 }
             }
