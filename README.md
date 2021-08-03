@@ -1,7 +1,4 @@
 # Applause-Demo
-A major feature of the Applause platform is our tester-matching algorithm. We are able to drill-down from a community of over 300k Testers each with multiple Devices, to a sub-set of Testers that best meet a Customer’s needs. As you can imagine, this is a complicated process that takes multiple dimensions into account.
-Your goal is to write a simpler matching system, this can even be a class, a module, a service, etc., whatever you think is needed for this exercise, that takes two matching Criteria (Country and Device) and presents a sorted list of results (more on this below).
-
 # Setup
 For this project, I used Spring Boot, JPA, Hibernate, and MySQL as the backend server. And I used react JS for the front-end.
 
