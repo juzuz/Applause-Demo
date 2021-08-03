@@ -5,6 +5,9 @@ Your goal is to write a simpler matching system, this can even be a class, a mod
 # Setup
 For this project, I used Spring Boot, JPA, Hibernate, and MySQL as the backend server. And I used react JS for the front-end.
 
+1. Create a schema and name it "applause" or [Your Name of choice]
+
+
 To run this code, you will need an IDE that has a spring boot workspace. For example, IntelliJ or VS Code with the spring boot dashboard extension.
 
 We will first need a schema for the database.
@@ -13,18 +16,29 @@ This can be changed in the application.properties file at "backend\src\main\reso
 
 ![appProps](./assets/appProps.PNG)
 
+2. Change the port number and schema name in the spring.datasource.url to match your configuration
+
 Change the URL to whichever port your MySQL server is running on and the "applause" in the URL to whatever name you have chosen.
+
+3. Change the user and password to allow access
+
+
 Change the username and password and the database will be all set!
 
 Find the "database.sql" file in the folder "/backend/database.sql"
-
 and run the code in your MySQL CLI or Workbench
+
+4. Run the database.sql code in the backend folder in your mysql CLI or Workbench
+
 
 Run the backend server with your IDE and now let's start the front-end server!
 
 You will need to enter the "frontend/applause_demo" folder and run 
     
+5. Run the following commands in the frontend/applause-demo folder
+
     yarn install
+    
     yarn start
 
 to begin the front-end server.
