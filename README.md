@@ -16,9 +16,13 @@ This can be changed in the application.properties file at "backend\src\main\reso
 Change the URL to whichever port your MySQL server is running on and the "applause" in the URL to whatever name you have chosen.
 Change the username and password and the database will be all set!
 
+Find the "database.sql" file in the folder "/backend/database.sql"
+
+and run the code in your MySQL CLI or Workbench
+
 Run the backend server with your IDE and now let's start the front-end server!
 
-You will need to enter the applause_demo folder and run 
+You will need to enter the "frontend/applause_demo" folder and run 
     
     yarn install
     yarn start

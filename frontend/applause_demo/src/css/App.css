@@ -84,6 +84,10 @@
   box-shadow: none;
 }
 
+.btn.btn-primary:focus:not(:active){
+  background-color: cadetblue;
+}
+
 .dropdown-menu.show{
   background: #FFFAFA;
 }
@@ -117,31 +121,14 @@
 }
 
 
-
 .delete-btn {
   background-color: navajowhite;
 }
 
 .delete-btn:hover {
-
   background-color: #C6E8EE;
 }
 
-/*.experience-list-container{*/
-/*}*/
-
-/*.experience-list-header{*/
-/*  display: flex;*/
-/*  justify-content: space-around;*/
-/*  font-size: large;*/
-/*  font-weight: bold;*/
-/*}*/
-
-/*.experience-list-item{*/
-/*  display: flex;*/
-/*  justify-content: space-around;*/
-/*  font-size: medium;*/
-/*}*/
 
 .item-container{
   display: grid;
@@ -162,6 +149,7 @@
   font-size: large;
   font-weight: bold;
 }
+
 
 
 .messages {

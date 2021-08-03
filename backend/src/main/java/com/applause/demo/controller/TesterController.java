@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 
@@ -17,13 +18,13 @@ public class TesterController {
     @Autowired
     private TesterService testerService;
 
-
+    @Transactional
     @GetMapping("/getCountries/{page}")
     public ResponseEntity<Page<String>> getCountries(@PathVariable(value = "page") int page){
-
         return new ResponseEntity<Page<String>>(testerService.getCountries(page),HttpStatus.OK);
     }
 
+    @Transactional
     @PostMapping("/search")
     public ResponseEntity<List<Object[]>> searchByFilter(@RequestParam("country") String countries, @RequestParam("device") String devices){
         String[] cList;String[] dList;
